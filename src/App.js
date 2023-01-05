@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Home from './components/Home';
+import './index.css';
+import styled from 'styled-components';
+import Intro from './components/Intro';
+import Vision from './components/Vision';
+import Utility from './components/Utility/Utility';
+import Roadmap from './components/Roadmap';
+import Tokenomics from './components/Tokenomics';
+import Team from './components/Team';
+import Faq from './components/Faq';
+import Footer from './components/Footer';
+
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+`
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+        <Home />
+        <Intro />
+        <Vision />
+        <Utility />
+        <Roadmap />
+        <Tokenomics />
+        <Team />
+        <Faq />
+        <Footer />
+    </Container>
   );
 }
 
