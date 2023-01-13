@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import pic from '../images/IMG_3725.PNG'
+import pic from '../images/IMG_3725.png'
 import Logo from '../images/cryptic_Logo _1.png'
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from "react-icons/fa";
 import { Link } from 'react-router-dom';

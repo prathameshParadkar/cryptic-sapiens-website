@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import img1 from '../images/IMG_3285_1.PNG'
+import img1 from '../images/IMG_3285_1.png'
 import Navbar from './Navbar'
 
 const Container = styled.div`
