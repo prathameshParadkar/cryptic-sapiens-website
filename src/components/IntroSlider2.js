@@ -1,7 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import {NftData} from '../Data/NftData'
+import {NftData2} from '../Data/NftData'
 import {screens} from '../Data/ScreenSizes'
+import {useLayoutEffect, useRef, useState} from 'react';
+import {animate, motion} from 'framer-motion'
 
 const SliderWrapper = styled.div`
 
@@ -13,7 +15,7 @@ const SliderWrapper = styled.div`
     /* height: 93vh; */
     margin-top: auto;
     margin-bottom: auto;
-    overflow: scroll;
+    overflow: hidden;
     scroll-behavior: smooth;
     -ms-overflow-style: none;
   scrollbar-width: none;
@@ -98,23 +100,61 @@ const Container = styled.div`
 `
 
 export default function IntroSlider2(props) {
+  const ref = useRef(null);
+  const [ht, setHt] = React.useState(0)
+  useLayoutEffect(() => {
+    setHt(ref.current.clientHeight);
+  }, []);
   return (
     <Container>  
       <BlurDiv2></BlurDiv2>
       <BlurDiv4></BlurDiv4>
 
         <SliderWrapper style={{right : "0", top : "0", height : "100vh", marginRight:"5vw"}}>
-            <SlideTrack>
+        <SlideTrack 
+              as = {motion.div}
 
-            {NftData.length > 0 && NftData.map((item, index) => {
-              return(
-                <SliderHero
-                key = {index}
-                src = {item}
-                />
-                )
+              initial = {{
+                y : 0
+              }}
+              animate ={{
+                y: [0, -(ht + 24) * (NftData2.length)]
+              }}
+
+            transition = {{
+              ease : "linear",
+              repeat : Infinity,
+              duration : (2 * NftData2.length)
+            }}
+            >
+              
+            {NftData2.length >3  && NftData2.map((item, index) => {
+
+                return(
+                  <SliderHero
+                  ref ={ref}
+                  key = {index}
+                  src = {item}
+                  />
+                  )
+                
               })}
-              </SlideTrack>
+              <SliderHero
+                  ref ={ref}
+                  key = {NftData2.length}
+                  src = {NftData2[0]}
+                  />
+                  <SliderHero
+                  ref ={ref}
+                  key = {NftData2.length + 1 }
+                  src = {NftData2[1]}
+                  />
+                  <SliderHero
+                  ref ={ref}
+                  key = {NftData2.length + 2}
+                  src = {NftData2[2]}
+                  />
+                </SlideTrack>
         </SliderWrapper>
     </Container>
   )

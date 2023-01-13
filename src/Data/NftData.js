@@ -12,6 +12,11 @@ export const NftData = [
     nft3,
     nft4,
     nft5,
+]
+export const NftData2 = [
+    nft4,
+    nft5,
     nft6,
     nft7,
+    nft1,
 ]

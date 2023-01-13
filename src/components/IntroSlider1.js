@@ -3,6 +3,9 @@ import styled, { keyframes } from 'styled-components'
 import { Keyframes } from 'styled-components'
 import {NftData} from '../Data/NftData'
 import {screens} from '../Data/ScreenSizes'
+import {useLayoutEffect, useRef, useState} from 'react';
+import {animate, motion} from 'framer-motion'
+import { duration } from '@mui/material'
 
 
 const Container = styled.div`
@@ -22,7 +25,7 @@ const SliderHero = styled.img`
     height: 25vh;
     min-width: 125px;
     border-radius: 25px;
-    margin-bottom: 1.5rem;
+    margin-bottom: 24px;
     @media ${screens.tablet} {
         width: 30vw;
         height: 28vh;
@@ -44,7 +47,7 @@ const SliderWrapper = styled.div`
     height: 45rem;
     margin-top: auto;
     margin-bottom: auto;
-    overflow: scroll;
+    overflow: hidden;
     scroll-behavior: smooth;
     -ms-overflow-style: none;
   scrollbar-width: none;
@@ -105,23 +108,63 @@ const BlurDiv3 = styled.div`
 `
 
 export default function IntroSlider1(props) {
+  const ref = useRef(null);
+  const [ht, setHt] = React.useState(0)
+  useLayoutEffect(() => {
+    setHt(ref.current.clientHeight);
+  }, []);
+
+
   return (
     <Container>  
     
         <BlurDiv1></BlurDiv1>
         <BlurDiv3></BlurDiv3>
         <SliderWrapper style={{right : "0", top : "0", marginRight:"5vw", marginTop : "13vh", '@media (max-width : 900px)':  {marginRight : "10vw"}}}>
-            <SlideTrack>
+            <SlideTrack 
+              as = {motion.div}
+
+              initial = {{
+                y : 0
+              }}
+              animate ={{
+                y: [0, -(ht + 24) * (NftData.length)]
+              }}
+
+            transition = {{
+              ease : "linear",
+              repeat : Infinity,
+              duration : (2 * NftData.length)
+            }}
+            >
               
-            {NftData.length > 0 && NftData.map((item, index) => {
-              return(
-                <SliderHero
-                key = {index}
-                    src = {item}
-                    />
-                    )
-                  })}
-            </SlideTrack>
+            {NftData.length >3  && NftData.map((item, index) => {
+
+                return(
+                  <SliderHero
+                  ref ={ref}
+                  key = {index}
+                  src = {item}
+                  />
+                  )
+                
+              })}
+              <SliderHero
+                  ref ={ref}
+                  key = {NftData.length}
+                  src = {NftData[0]}
+                  />
+                  <SliderHero
+                  ref ={ref}
+                  key = {NftData.length + 1 }
+                  src = {NftData[1]}
+                  />
+                  <SliderHero
+                  ref ={ref}
+                  key = {NftData.length + 2}
+                  src = {NftData[2]}
+                  />
+                </SlideTrack>
         </SliderWrapper>
     </Container>
   )
