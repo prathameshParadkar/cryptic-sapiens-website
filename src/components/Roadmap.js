@@ -3,6 +3,8 @@ import React from 'react'
 import styled from 'styled-components'
 import roadmapPic from "../images/roadmap.png"
 import Dropdown from './Dropdown'
+import {screens} from "../Data/ScreenSizes"
+
 
 const Container = styled.div.attrs(props => (
     {
@@ -16,7 +18,7 @@ const Container = styled.div.attrs(props => (
 `
 
 const ImgDiv = styled.div`
-z-index: 0;
+    z-index: 0;
     position: relative;
     width: 70%;
     height: 150vh;
@@ -25,6 +27,15 @@ z-index: 0;
     border-radius: 47px;
     margin-bottom: 30px;
     overflow: hidden;
+
+    @media ${screens.tablet} {
+        width: 85%;
+        height: 80vh;
+    }
+    @media ${screens.mobile} {
+        width: 95%;
+        height: 80vh;
+    }
 `
 const Text = styled.p`
     z-index: 1;
@@ -41,7 +52,15 @@ const Text = styled.p`
 
     text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
     transform: rotate(-90deg);
-
+    @media ${screens.tablet} {
+        font-size: 60px;
+    }
+    @media ${screens.mobile} {
+        font-size: 30px;
+        left: -75px;
+        top: 100px;
+        text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
+    }
 `
 
 
@@ -49,44 +68,51 @@ const Text = styled.p`
 
 
 export default function Roadmap() {
+    const [isMobile, setIsMobile] = React.useState(false)
+    React.useEffect(() =>{
+        if (window.innerWidth <= 900){
+            setIsMobile(true)
+        }
+    }, [])
+
   return (
     <>
     <Container className="RoadmapPage">
         <ImgDiv>
             <Text>CRYPTIC MAP</Text>
             <Dropdown 
-                top={50} 
-                left={600} 
+                top={!isMobile ? 6 : 6} 
+                left={!isMobile ? 37 : 44} 
                 index={1}
                 title={"Ideation & Art completion"}
             />
             <Dropdown 
-                top={220} 
-                left={100} 
+                top={!isMobile ? 30 : 20} 
+                left={!isMobile ? 8 : 10} 
                 index={2}
                 title={"NFT launch & web3"}
             />
             <Dropdown 
-                top={400} 
-                left={600} 
+                top={!isMobile ? 55 : 33} 
+                left={!isMobile ? 37 : 47} 
                 index={3}
                 title={"Web3 & CSB"}
             />
             <Dropdown 
-                top={600} 
-                left={100} 
+                top={!isMobile ? 75 : 43} 
+                left={!isMobile ? 10 : 10} 
                 index={4}
                 title={"Metaverse"}
             />
             <Dropdown 
-                top={750} 
-                left={600} 
+                top={!isMobile ? 100 : 55} 
+                left={!isMobile ? 37 : 47} 
                 index={5}
                 title={"Web3 Print Media"}
             />
             <Dropdown 
-                top={900} 
-                left={100} 
+            top={!isMobile ? 120 : 65} 
+            left={!isMobile ? 10 : 10} 
                 index={6}
                 title={"Web3 investing platform"}
             />

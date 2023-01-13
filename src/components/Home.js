@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import img1 from '../images/IMG_3285_1.png'
+import img1 from '../images/IMG_3285_1.PNG'
 import Navbar from './Navbar'
 
 const Container = styled.div`
@@ -13,7 +13,7 @@ export default function Home() {
   return (
     <Container>
     <Navbar />
-    <img src={img1} />
+    <img style={{width : "100vw", height : "75vw", marginTop : "40px"}} src={img1} />
     </Container>
   )
 }

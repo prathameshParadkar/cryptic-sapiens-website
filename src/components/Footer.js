@@ -1,9 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import pic from '../images/IMG_3725.png'
+import pic from '../images/IMG_3725.PNG'
 import Logo from '../images/cryptic_Logo _1.png'
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from "react-icons/fa";
 import { Link } from 'react-router-dom';
+import {screens} from "../Data/ScreenSizes"
 
 const Container = styled.div.attrs(props => (
     {
@@ -19,19 +20,35 @@ const Container = styled.div.attrs(props => (
 
 const Image = styled.img`
     scale : 0.8;
+
+    @media ${screens.tablet} {
+        scale: 0.9;
+    }
 `
 
 const FooterWrapper = styled.div`
     width: 100%;
-    height: 20vh;
+    height: 17vh;
     background: #ABE2F3;
     display: flex;
     justify-content: space-around;
+    @media ${screens.tablet} {
+        height: 8vh;
+    }
+    @media ${screens.mobile} {
+        height: 10vh;
+    }
 `
 
 const FooterLogo = styled.img`
     align-self: center;
-    width : 25%;
+    width : 20vw;
+    @media ${screens.tablet} {
+        width: 30vw;
+    }
+    @media ${screens.mobile} {
+        width: 37vw;
+    }
 `
 const FooterLinks = styled.div`
     display: flex;
@@ -40,8 +57,24 @@ const FooterLinks = styled.div`
     margin-bottom: 1%;
 `
 
+const FooterLink = styled(Link)`
+    color : white;
+       margin: 1vw; 
+       font-size: 1.5vw;
+    cursor : pointer;
+
+    @media ${screens.tablet} {
+        margin-bottom: 10%;
+        font-size: 2.5vw;
+    }
+    @media ${screens.mobile} {
+        margin-bottom: 10%;
+        font-size: 5vw;
+        margin: 1.5vw; 
+    }
+`
+
 export default function Footer() {
-    const linkStyles = {color : "white", scale : "2", margin: "20px", cursor : "pointer"}
   return (
     <>
         <Container>
@@ -54,18 +87,18 @@ export default function Footer() {
                 
                 
                 <FooterLinks>
-                    <Link to="/facebook" >
-                        <FaFacebookF style={linkStyles} />
-                    </Link>
-                    <Link to="/twitter">
-                        <FaTwitter style={linkStyles} />
-                    </Link>
-                    <Link to="/linkedin">
-                        <FaLinkedinIn style={linkStyles} />
-                    </Link>
-                    <Link to="/instagram">
-                        <FaInstagram style={linkStyles} />
-                    </Link>
+                    <FooterLink to="/facebook" >
+                        <FaFacebookF />
+                    </FooterLink>
+                    <FooterLink to="/twitter">
+                        <FaTwitter />
+                    </FooterLink>
+                    <FooterLink to="/linkedin">
+                        <FaLinkedinIn />
+                    </FooterLink>
+                    <FooterLink to="/instagram">
+                        <FaInstagram />
+                    </FooterLink>
                 </FooterLinks>
             </FooterWrapper>
         </Container>

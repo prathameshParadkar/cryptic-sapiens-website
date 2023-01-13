@@ -1,30 +1,45 @@
 import React from 'react'
 import styled from 'styled-components'
-import IntroSlider from './IntroSlider'
+import IntroSlider from './IntroSlider1'
 import {NftData} from '../Data/NftData'
-import { Ref } from 'react'
+import IntroSlider1 from './IntroSlider1'
+import IntroSlider2 from './IntroSlider2'
+import { delay, motion } from 'framer-motion'
+import Aos from 'aos'
+import "aos/dist/aos.css"
+import {screens} from '../Data/ScreenSizes'
 
-const Container = styled.div.attrs(props => ({
-    className : props.className
+const Container = styled(motion.div).attrs(props => ({
+    className : props.className,
 }))`
-    height: 100vh;
+    height: 120vh;
     position: relative;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap-reverse;
     margin-top: 100px;
+    @media ${screens.mobile}, ${screens.tablet} {
+        flex-wrap: nowrap;
+        height: 195vh;
+    }
 `
 
 const BlueDiv = styled.div`
-    width: 50%;
+    width: 55vw;
     height: 50%;
     box-sizing: border-box;
-    padding-left: 3rem;
+    padding-left: 6rem;
     padding-top: 0.8rem;
     margin-left: auto;
     margin-right: auto;
     margin-top: 30px;
     border-radius: 47px;
+    @media ${screens.mobile}, ${screens.tablet} {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 40%;
+    }
 `
 
 const IntroText = styled.h1`
@@ -33,12 +48,16 @@ const IntroText = styled.h1`
     font-family: 'Jua';
     font-style: normal;
     font-weight: 400;
-    font-size: 7.5rem;
+    font-size: 8.5vw;
     letter-spacing: 0.015em;
     z-index: 3;
     color: #FFFFFF;
 
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    @media ${screens.mobile}, ${screens.tablet} {
+        left:15vw;
+    }
 `
 
 const IntroPara = styled.p`
@@ -49,17 +68,25 @@ const IntroPara = styled.p`
     font-family: 'Itim';
     font-style: normal;
     font-weight: 400;
-    font-size: 1.5rem;
+    font-size: 1.7vw;
+    line-height: 1.7vw;
     z-index: 2;
     color: #557371;
 
+    @media ${screens.mobile}, ${screens.tablet} {
+        left: 15%;
+        font-size: 5vw;
+        top: 13vh;
+        width: 70vw;
+        line-height: 5vw;
+    }
 `
 
 const SideBox = styled.div`
     width: 50%;
     height: 41%;
     box-sizing: border-box;
-    padding-left: 3rem;
+    padding-left: 6rem;
     padding-top: 0.8rem;
     margin-left: auto;
     margin-right: auto;
@@ -73,15 +100,26 @@ const SideBoxText = styled.h1`
     font-family: 'Jua';
     font-style: normal;
     font-weight: 400;
-    font-size: 35px;
+    font-size: 3vw;
 
     display: flex;
     align-items: center;
     letter-spacing: 0.015em;
 
     color: #59B5BA;
-
     text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    @media ${screens.mobile}{
+        position: absolute;
+        top: 78%;
+        left: 15%;
+        font-size: 7vw;
+    }
+    @media ${screens.tablet}{
+        position: absolute;
+        top: 82%;
+        left: 15%;
+        font-size: 7vw;
+    }
 `
 
 const SideBoxPara = styled.p`
@@ -90,9 +128,23 @@ const SideBoxPara = styled.p`
     font-family: 'Itim';
     font-style: normal;
     font-weight: 400;
-    font-size: 1.5rem;
+    font-size: 1.7vw;
 
-
+    @media ${screens.mobile}{
+        position: absolute;
+        top: 82%;
+        left: 15%;
+        width: 80%;
+        font-size: 4vw;
+    }
+    @media ${screens.tablet} {
+        position: absolute;
+        top: 87%;
+        left: 15%;
+        width: 80%;
+        font-size: 4vw;
+        width: 78%;
+    }
     color: #557371;
 
 `
@@ -109,171 +161,104 @@ const SideBoxBtn = styled.button`
     font-family: 'Itim';
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 1.3vw;
     border: none;
+    @media ${screens.mobile} {
+        position: absolute;
+        top: 89%;
+        left: 10%;
+        width: 80%;
+        height: 3%;
+        font-size: 3vw;
+    }
+
+    @media ${screens.tablet} {
+        position: absolute;
+        width: 85%;
+        top: 96%;
+        left: 10%;
+        height: 3%;
+        font-size: 3vw;
+    }
 
 `
 
-const BlurDiv1 = styled.div`
-   position: absolute;
-    width: 85%;
-    height: 15%;
-    top: 0;
-    left : 6%;
-    z-index: -1;
-    background-color: #ABE2F3;
-
-    background: #ABE2F3;
-    border-radius: 47px;
-
-    background: #ABE2F3;
-    border-radius: 47px;
-    z-index: 2;
-    background: linear-gradient(180deg, #ABE2F3 26.9%, rgba(171, 226, 243, 0) 100%), linear-gradient(180deg, #ABE2F3 26.9%, rgba(171, 226, 243, 0) 100%), linear-gradient(180deg, #ABE2F3 26.9%, rgba(171, 226, 243, 0) 100%), linear-gradient(180deg, #ABE2F3 26.9%, rgba(171, 226, 243, 0) 100%);
-    border-radius: 47px;
-`
-const BlurDiv2 = styled.div`
-   position: absolute;
-    width: 50%;
-    height: 15%;
-    top: 17%;
-    right: 25%;
-    z-index: -1;
-    background-color: #ABE2F3;
-
-    background: #ABE2F3;
-    border-radius: 47px;
-
-    background: #ABE2F3;
-    border-radius: 47px;
-    z-index: 2;
-    background: linear-gradient(180deg, #ABE2F3 26.9%, rgba(171, 226, 243, 0) 100%), linear-gradient(180deg, #ABE2F3 26.9%, rgba(171, 226, 243, 0) 100%), linear-gradient(180deg, #ABE2F3 26.9%, rgba(171, 226, 243, 0) 100%), linear-gradient(180deg, #ABE2F3 26.9%, rgba(171, 226, 243, 0) 100%);
-    border-radius: 47px;
-`
-const BlurDiv3 = styled.div`
-   position: absolute;
-    width: 25%;
-    height: 25%;
-    top: 87%;
-    right: 0;
-    z-index: 2;
-    background: linear-gradient(180deg, #FFFFFF 26.9%, rgba(255, 255, 255, 0) 100%), linear-gradient(180deg, #FFFFFF 26.9%, rgba(255, 255, 255, 0) 100%), linear-gradient(180deg, #FFFFFF 26.9%, rgba(255, 255, 255, 0) 100%);
-    border-radius: 47px;
-    transform: rotate(-180deg);
-`
-const BlurDiv4 = styled.div`
-   position: absolute;
-    width: 15%;
-    height: 20%;
-    top: 80%;
-    right: 25%;
-    z-index: 2;
-    background: linear-gradient(180deg, #FFFFFF 26.9%, rgba(255, 255, 255, 0) 100%), linear-gradient(180deg, #FFFFFF 26.9%, rgba(255, 255, 255, 0) 100%), linear-gradient(180deg, #FFFFFF 26.9%, rgba(255, 255, 255, 0) 100%);
-    border-radius: 47px;
-    transform: rotate(-180deg);
-`
-const SliderWrapper = styled.div`
-
-    position: relative;
-    /* top: 7%; */
-    /* right: 16%; */
+const Sliders = styled.div`
+@media ${screens.tablet} {
+    position: absolute;
     display: flex;
-    flex-direction: column;
-    /* height: 93vh; */
-    margin-top: auto;
-    margin-bottom: auto;
-    overflow: scroll;
-    scroll-behavior: smooth;
-    -ms-overflow-style: none;
-  scrollbar-width: none;
-
-  &::-webkit-scrollbar {
-  display: none;
+    top: 23.55%;
+    left: 15%;
+   width: 80%;
 }
-`
-
-const SliderHero = styled.img`
-    width: 150px;
-    height: 189.6px;
-    border-radius: 25px;
-    margin-bottom: 1.5rem;
+@media ${screens.mobile} {
+    position: absolute;
+    display: flex;
+    top: 15%;
+    left: 14%;
+   width: 80%;
+}
 `
 
 const BackDiv = styled.div`
     position: absolute;
     width: 85%;
-    height: 55%;
-    top: 0;
-    left : 6%;
-    z-index: -1;
-    background-color: #ABE2F3;
+    height: 50%;
+  left: 50%;
 
-    background: #ABE2F3;
+  transform: translate(-50%, 0);
+    z-index: -3;
+    background-color: #ABE2F3;
     border-radius: 47px;
+
+    @media ${screens.tablet} {
+        height: 40%;
+    }
 `
 
 
 
 export default function Intro() {
+    React.useEffect(() => {
+        Aos.init({duration : 1000})
+    }, [])
+
   return (
-    <>
-    <Container className="IntroPage" >
-        <BackDiv></BackDiv>
-        <BlurDiv1></BlurDiv1>
-        <BlurDiv2></BlurDiv2>
-        <BlurDiv3></BlurDiv3>
-        <BlurDiv4></BlurDiv4>
-        <div style={{display : "flex", marginTop : "30px"}}>
-        <SliderWrapper style={{right : "0", top : "0", height : "73vh", marginRight:"50px", marginTop : "125px"}}>
-            {NftData.length > 0 && NftData.map((item, index) => {
-                return(
-                    <SliderHero
-                     key = {index}
-                    src = {item}
-                    />
-                    )
-                })}
-        </SliderWrapper>
-        <SliderWrapper style={{right : "0", top : "0", height : "100vh"}}>
-            {NftData.length > 0 && NftData.map((item, index) => {
-                return(
-                    <SliderHero
-                    
-                    key = {index}
-                    src = {item}
-                    />
-                    )
-                })}
-        </SliderWrapper>
-        </div>
+    <Container
+   
+     className="IntroPage">
+        <BackDiv>
+        </BackDiv>
+        
+        <Sliders data-aos = "fade-left" style={{display : "flex", marginTop : "7vh"}}>
+            <IntroSlider1  />
+            <IntroSlider2 />
+        </Sliders>
      
         <BlueDiv>
-        
-        {/* <BlurDiv></BlurDiv> */}
-            <IntroText>
-                INTRODUCTION
+            <IntroText data-aos = "fade-right">
+            INTRODUCTION
             </IntroText>
-            <IntroPara>
-            Human evolution is driven by a desire to hunt, survive, collect rare items, explore, and form communities. This has resulted in the creation of diverse cultures around the world. Culture is a fundamental part of our identity and helps us connect with others. The evolved cultures preserved over blockchain using cryptography by "Cryptic Sapiens".
-            </IntroPara>
+            
+                <IntroPara data-aos = "fade-right">
+                Human evolution is driven by a desire to hunt, survive, collect rare items, explore, and form communities. This has resulted in the creation of diverse cultures around the world. Culture is a fundamental part of our identity and helps us connect with others. The evolved cultures preserved over blockchain using cryptography by "Cryptic Sapiens".
+                </IntroPara>
+            
         </BlueDiv>
 
         <SideBox>
-            <SideBoxText>
+            <SideBoxText data-aos = "fade-right">
             BE A CRYPTIC SAPIEN
             </SideBoxText>
-            <SideBoxPara>
-            Join Cryptic Sapiens if you value cultures, enjoy challenges, have a positive mindset, love travelling, meeting new people, learning, laughing, and sharing experiences."
+            <SideBoxPara data-aos = "fade-right">
+            Join Cryptic Sapiens if you value cultures, enjoy challenges, have a positive mindset, love travelling, meeting new people, learning, laughing, and sharing experiences.
             </SideBoxPara>
-            <SideBoxBtn>
+            <SideBoxBtn data-aos = "fade-up">
             Whitepaper
             </SideBoxBtn>
             
         </SideBox>  
         
     </Container>
-        
-        
-    </>
   )
 }

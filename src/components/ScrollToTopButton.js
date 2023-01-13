@@ -1,7 +1,7 @@
 import React from 'react'
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 import styled from 'styled-components';
-
+import {screens} from '../Data/ScreenSizes'
 
 const Btn = styled.div`
     height: 50px;
@@ -30,6 +30,13 @@ const Btn = styled.div`
 
 export default function ScrollToTopButton() {
     const [isVisible, setIsVisible] = React.useState(false)
+    const [isMobile, setIsMobile] = React.useState(false)
+
+    React.useEffect(() =>{
+        if (window.innerWidth <= 900){
+            setIsMobile(true)
+        }
+    }, [])
 
     const ToggleAppear = () => {
         if(window.pageYOffset > 300){
@@ -57,7 +64,7 @@ export default function ScrollToTopButton() {
     
 return (
     <> 
-    {isVisible && 
+    {!isMobile &&isVisible && 
     <Btn onClick={scrollToTop}>
         <ArrowUpwardIcon />
     </Btn>
