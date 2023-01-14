@@ -157,7 +157,7 @@ top: 55%;
 `
 
 
-export default function Tokenomics() {
+export default function Tokenomics(props) {
     const [smallImg, setSmallImg] = React.useState(false)
 
     React.useEffect(() => {
@@ -169,11 +169,11 @@ export default function Tokenomics() {
   return (
     <>
         <Container>
-            <LeftImage data-aos = "fade-right" src={!smallImg ? img1 : img11}/>
-            <Text data-aos = "fade-left">
+            <LeftImage data-aos = {!props.isMobile ? "fade-right" : "fade-up" } src={!smallImg ? img1 : img11}/>
+            <Text data-aos = {!props.isMobile ? "fade-left" : "fade-up" }>
                 TOKENOMICS
             </Text>
-            <SubText data-aos = "fade-left">The "Cryptic Sapiens NFTs" will be the center of the Galaxy around which everything revolves</SubText>
+            <SubText data-aos = {!props.isMobile ? "fade-left" : "fade-up" }>The "Cryptic Sapiens NFTs" will be the center of the Galaxy around which everything revolves</SubText>
             <Points>
                 <li data-aos = "fade-up"> Total Supply of NFTs: 6999</li>
                 <li data-aos = "fade-up"> Whitelist/Pre sale: 900</li>

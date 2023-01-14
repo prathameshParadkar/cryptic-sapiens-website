@@ -44,6 +44,7 @@ const RightBox = styled.div`
         margin-right: 5%;
         @media ${screens.tablet} {
             align-items: center;
+            justify-content: center;
         }
         
     `
@@ -81,32 +82,33 @@ const RightBoxPara = styled.p`
     color: #557371;
     @media ${screens.tablet} {
             align-items: center;
-            font-size: 5vw;
+            font-size: 4.7vw;
             text-align: left;
             padding: 0 5%;
-            line-height: 5vw;
+            line-height: 4.7vw;
             margin-top: 7%;
+            margin-left: 5%;
         }
 
 `
 
-export default function Vision() {
+export default function Vision(props) {
     React.useEffect (() => {
         Aos.init({duration : 1000})
     })
   return (
     <Container className="VisionPage">
-        <LeftImage data-aos = "fade-right" src={pic} />
+        <LeftImage data-aos = {!props.isMobile ? "fade-right" : "fade-up" } src={pic} />
         
         <RightBox>
-            <RightBoxText data-aos = "fade-left">
+            <RightBoxText data-aos = {!props.isMobile ? "fade-left" : "fade-up" }>
             MISSION & VISION
             </RightBoxText>
             
-            <RightBoxPara data-aos = "fade-left">
+            <RightBoxPara data-aos = {!props.isMobile ? "fade-left" : "fade-up" }>
             Our vision is to create a space of "Exclusivity" for those who possess our NFTs.
             </RightBoxPara>
-            <RightBoxPara data-aos = "fade-left" style={{marginTop : "20px"}}>
+            <RightBoxPara data-aos = {!props.isMobile ? "fade-left" : "fade-up" } style={{marginTop : "20px"}}>
             "Our mission is to create web 3 avenues that maintain "Exclusivity". Owning our NFTs adds value and a new dimension to the holder.
             </RightBoxPara>
         

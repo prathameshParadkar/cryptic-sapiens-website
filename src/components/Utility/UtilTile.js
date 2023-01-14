@@ -33,8 +33,8 @@ const TileText = styled.p`
 const Tile = styled(Paper)`
     height : 33vh;
     width : 13vw;
-    margin-top : "20px";
-    min-width : "150px";
+    margin-top : 20px;
+    min-width : 150px;
 
     @media ${screens.tablet} {
         height: 23vh;

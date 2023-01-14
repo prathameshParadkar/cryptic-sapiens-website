@@ -67,13 +67,8 @@ const Text = styled.p`
 
 
 
-export default function Roadmap() {
-    const [isMobile, setIsMobile] = React.useState(false)
-    React.useEffect(() =>{
-        if (window.innerWidth <= 900){
-            setIsMobile(true)
-        }
-    }, [])
+export default function Roadmap(props) {
+    
 
   return (
     <>
@@ -81,38 +76,38 @@ export default function Roadmap() {
         <ImgDiv>
             <Text>CRYPTIC MAP</Text>
             <Dropdown 
-                top={!isMobile ? 6 : 6} 
-                left={!isMobile ? 37 : 44} 
+                top={!props.isMobile ? 6 : 6} 
+                left={!props.isMobile ? 37 : 44} 
                 index={1}
                 title={"Ideation & Art completion"}
             />
             <Dropdown 
-                top={!isMobile ? 30 : 20} 
-                left={!isMobile ? 8 : 10} 
+                top={!props.isMobile ? 30 : 20} 
+                left={!props.isMobile ? 8 : 10} 
                 index={2}
                 title={"NFT launch & web3"}
             />
             <Dropdown 
-                top={!isMobile ? 55 : 33} 
-                left={!isMobile ? 37 : 47} 
+                top={!props.isMobile ? 55 : 33} 
+                left={!props.isMobile ? 37 : 47} 
                 index={3}
                 title={"Web3 & CSB"}
             />
             <Dropdown 
-                top={!isMobile ? 75 : 43} 
-                left={!isMobile ? 10 : 10} 
+                top={!props.isMobile ? 75 : 43} 
+                left={!props.isMobile ? 10 : 10} 
                 index={4}
                 title={"Metaverse"}
             />
             <Dropdown 
-                top={!isMobile ? 100 : 55} 
-                left={!isMobile ? 37 : 47} 
+                top={!props.isMobile ? 100 : 55} 
+                left={!props.isMobile ? 37 : 47} 
                 index={5}
                 title={"Web3 Print Media"}
             />
             <Dropdown 
-            top={!isMobile ? 120 : 65} 
-            left={!isMobile ? 10 : 10} 
+            top={!props.isMobile ? 120 : 65} 
+            left={!props.isMobile ? 10 : 10} 
                 index={6}
                 title={"Web3 investing platform"}
             />

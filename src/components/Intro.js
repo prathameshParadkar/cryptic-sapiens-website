@@ -218,7 +218,7 @@ const BackDiv = styled.div`
 
 
 
-export default function Intro() {
+export default function Intro(props) {
     React.useEffect(() => {
         Aos.init({duration : 1000})
     }, [])
@@ -230,27 +230,28 @@ export default function Intro() {
         <BackDiv>
         </BackDiv>
         
-        <Sliders data-aos = "fade-left" style={{display : "flex", marginTop : "7vh"}}>
+        <Sliders data-aos = {!props.isMobile ? "fade-left" : "fade-up" } 
+                style={{display : "flex", marginTop : "7vh"}}>
             <IntroSlider1  />
             <IntroSlider2 />
         </Sliders>
      
         <BlueDiv>
-            <IntroText data-aos = "fade-right">
+            <IntroText data-aos = {!props.isMobile ? "fade-right" : "fade-up" }>
             INTRODUCTION
             </IntroText>
             
-                <IntroPara data-aos = "fade-right">
+                <IntroPara data-aos = {!props.isMobile ? "fade-right" : "fade-up" }>
                 Human evolution is driven by a desire to hunt, survive, collect rare items, explore, and form communities. This has resulted in the creation of diverse cultures around the world. Culture is a fundamental part of our identity and helps us connect with others. The evolved cultures preserved over blockchain using cryptography by "Cryptic Sapiens".
                 </IntroPara>
             
         </BlueDiv>
 
         <SideBox>
-            <SideBoxText data-aos = "fade-right">
+            <SideBoxText data-aos = {!props.isMobile ? "fade-right" : "fade-up" }>
             BE A CRYPTIC SAPIEN
             </SideBoxText>
-            <SideBoxPara data-aos = "fade-right">
+            <SideBoxPara data-aos = {!props.isMobile ? "fade-right" : "fade-up" }>
             Join Cryptic Sapiens if you value cultures, enjoy challenges, have a positive mindset, love travelling, meeting new people, learning, laughing, and sharing experiences.
             </SideBoxPara>
             <SideBoxBtn data-aos = "fade-up">

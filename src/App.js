@@ -20,14 +20,20 @@ const Container = styled.div`
 `
 
 function App() {
+  const [isMobile, setIsMobile] = React.useState(false)
+  React.useEffect(() =>{
+    if (window.innerWidth <= 900){
+        setIsMobile(true)
+    }
+}, [])
   return (
     <Container>
         <Home />
-        <Intro />
-        <Vision />
+        <Intro isMobile = {isMobile}/>
+        <Vision isMobile = {isMobile}/>
         <Utility />
-        <Roadmap />
-        <Tokenomics />
+        <Roadmap isMobile = {isMobile}/>
+        <Tokenomics isMobile = {isMobile}/>
         <Team />
         <Faq />
         <Footer />
