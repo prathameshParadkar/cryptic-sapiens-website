@@ -86,7 +86,7 @@ export default function FaqTile(props) {
                 setState(prev => (!prev));
                 setEffect(prev => (!prev));
             }}>
-           <Question> {`This is Question ${props.index} ?`}
+           <Question> {`${props.index} ${props.question}`}
 
 
            {!state && 
@@ -106,8 +106,8 @@ export default function FaqTile(props) {
             </Question>
             {state && 
             <Answer>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque voluptates ratione eveniet repudiandae id modi beatae ea qui laudantium nihil, fugit, eius doloremque rem iusto animi! Soluta voluptatibus eos eaque?
-           </Answer>
+                {props.answer}    
+            </Answer>
             }
         </Faq>
     </>

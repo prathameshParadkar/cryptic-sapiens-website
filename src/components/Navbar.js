@@ -11,7 +11,7 @@ const Nav = styled.div`
     position: fixed;
     z-index: 10;
     background-color: #ABE2F3;
-    width : 100%;
+    width : 100vw;
     height: 10vh;
     display: flex;
     justify-content: space-around ;
@@ -67,14 +67,14 @@ const Breadcrum = styled(HiMenu)`
 
 const NavMenu = styled.div`
     position: absolute;
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     font-size: 20px;
-    z-index: 10;
+    z-index: 100;
     background-color:#ABE2F3 ;
 
     @media ${screens.laptop} {

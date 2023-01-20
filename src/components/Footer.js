@@ -57,12 +57,16 @@ const FooterLinks = styled.div`
     margin-bottom: 1%;
 `
 
-const FooterLink = styled(Link)`
+const FooterLink = styled.a`
     color : white;
        margin: 1vw; 
        font-size: 1.5vw;
     cursor : pointer;
+    
 
+    &:hover {
+        color: ${(props) => props.fontColor === "white" ? "white" : props.fontColor };
+    }
     @media ${screens.tablet} {
         margin-bottom: 10%;
         font-size: 2.5vw;
@@ -74,7 +78,16 @@ const FooterLink = styled(Link)`
     }
 `
 
+
+
 export default function Footer() {
+
+    const RedirectPage = () => {
+        React.useEffect(() => {
+          window.location.replace('https://www.google.com')
+        }, [])
+      }
+
   return (
     <>
         <Container>
@@ -87,16 +100,13 @@ export default function Footer() {
                 
                 
                 <FooterLinks>
-                    <FooterLink to="/facebook" >
-                        <FaFacebookF />
+                    <FooterLink fontColor = "#1DA1F2" href='https://twitter.com/crypticsapiens?s=11&t=Zm9P0IsipIk1xjTQ0IxluA' target="_blank">
+                        <FaTwitter  />
                     </FooterLink>
-                    <FooterLink to="/twitter">
-                        <FaTwitter />
-                    </FooterLink>
-                    <FooterLink to="/linkedin">
+                    <FooterLink fontColor = "#0A66C2" href='https://www.linkedin.com/company/cryptic-sapiens-nfts/' target="_blank">
                         <FaLinkedinIn />
                     </FooterLink>
-                    <FooterLink to="/instagram">
+                    <FooterLink fontColor = "#f542c2" href='https://instagram.com/crypticsapiens?igshid=Zjc2ZTc4Nzk=' target="_blank">
                         <FaInstagram />
                     </FooterLink>
                 </FooterLinks>

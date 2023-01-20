@@ -8,6 +8,7 @@ import { delay, motion } from 'framer-motion'
 import Aos from 'aos'
 import "aos/dist/aos.css"
 import {screens} from '../Data/ScreenSizes'
+import { useNavigate } from 'react-router-dom'
 
 const Container = styled(motion.div).attrs(props => ({
     className : props.className,
@@ -152,8 +153,6 @@ const SideBoxBtn = styled.button`
     position: relative;
     width: 100%;
     height: 15%;
-
-
     background: linear-gradient(180deg, #F5F5F5 0%, #C4F5F5 120.37%);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 72px;
@@ -163,6 +162,14 @@ const SideBoxBtn = styled.button`
     font-weight: 400;
     font-size: 1.3vw;
     border: none;
+    cursor: pointer;
+
+    &:hover {
+        scale: 1.05;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.25);
+        transition: 150ms;
+    }
+
     @media ${screens.mobile} {
         position: absolute;
         top: 89%;
@@ -180,6 +187,8 @@ const SideBoxBtn = styled.button`
         height: 3%;
         font-size: 3vw;
     }
+
+    
 
 `
 
@@ -219,6 +228,12 @@ const BackDiv = styled.div`
 
 
 export default function Intro(props) {
+
+    const url = "https://crypticsapiens.gitbook.io/welcome-to-gitbook/dJVE5uOJ8j89GE3Cdhf2/" 
+    const routeChange = () =>{ 
+        window.open(url, '_blank')
+    }
+
     React.useEffect(() => {
         Aos.init({duration : 1000})
     }, [])
@@ -231,7 +246,7 @@ export default function Intro(props) {
         </BackDiv>
         
         <Sliders data-aos = {!props.isMobile ? "fade-left" : "fade-up" } 
-                style={{display : "flex", marginTop : "7vh"}}>
+                style={{display : "flex", marginTop : "6vh"}}>
             <IntroSlider1  />
             <IntroSlider2 />
         </Sliders>
@@ -254,7 +269,8 @@ export default function Intro(props) {
             <SideBoxPara data-aos = {!props.isMobile ? "fade-right" : "fade-up" }>
             Join Cryptic Sapiens if you value cultures, enjoy challenges, have a positive mindset, love travelling, meeting new people, learning, laughing, and sharing experiences.
             </SideBoxPara>
-            <SideBoxBtn data-aos = "fade-up">
+
+            <SideBoxBtn onClick={routeChange} data-aos = "fade-up">
             Whitepaper
             </SideBoxBtn>
             

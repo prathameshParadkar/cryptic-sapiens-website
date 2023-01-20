@@ -80,36 +80,76 @@ export default function Roadmap(props) {
                 left={!props.isMobile ? 37 : 44} 
                 index={1}
                 title={"Ideation & Art completion"}
+                para = {[
+                    "Ideation phase of the project.",
+                    "Recruiting the team.",
+                    "Art style and R&D completion.",
+                    "Smart Contract development."
+                ]}
             />
             <Dropdown 
                 top={!props.isMobile ? 30 : 20} 
                 left={!props.isMobile ? 8 : 10} 
                 index={2}
                 title={"NFT launch & web3"}
+                para = {[
+                    "Web development.",
+                    "Rarity distribution planning.",
+                    "Smart Contract Deployment.",
+                    "Auditing of the smart contract.",
+                    'Launching "Cryptic Sapiens" NFTs.'
+                ]}
             />
             <Dropdown 
                 top={!props.isMobile ? 55 : 33} 
                 left={!props.isMobile ? 37 : 47} 
                 index={3}
                 title={"Web3 & CSB"}
+                para = {[
+                    "Indutry collaboration identification.",
+                    "Manual testing of web 3 platforms with NFT holders.",
+                    "NFT Airdrop/launch.",
+                    "Web3 platform full integration."
+                ]}
             />
             <Dropdown 
                 top={!props.isMobile ? 75 : 43} 
-                left={!props.isMobile ? 10 : 10} 
+                left={!props.isMobile ? 8 : 10} 
                 index={4}
                 title={"Metaverse"}
+                para = {[
+                    "NFT bank ideation & Functioning.",
+                    "Bank functioning (beta).",
+                    "Cryptocurrency launching.",
+                    "Integration of cryptocurrency to the web3 & CSB platforms.",
+                    "Full Web3 & CSB facilities to the NFT holders."
+                ]}
             />
             <Dropdown 
                 top={!props.isMobile ? 100 : 55} 
                 left={!props.isMobile ? 37 : 47} 
                 index={5}
                 title={"Web3 Print Media"}
+                para = {[
+                    "Ideation of the concept.",
+                    "Generation of the Print media.",
+                    "Identifying contributors.",
+                    "Print Media design and release.",
+                    "Incentive's to the community participants."
+                ]}
             />
             <Dropdown 
-            top={!props.isMobile ? 120 : 65} 
-            left={!props.isMobile ? 10 : 10} 
+            top={!props.isMobile ? 115 : 64.2} 
+            left={!props.isMobile ? 8 : 10} 
                 index={6}
                 title={"Web3 investing platform"}
+                para = {[
+                    "Metaverse ideation.",
+                    "Land acquisition.",
+                    "NFTs/Lands launch.",
+                    "The land schemes and attributes.",
+                    "Development."
+                ]}
             />
             
             

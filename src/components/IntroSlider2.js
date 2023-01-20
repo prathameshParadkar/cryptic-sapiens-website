@@ -56,6 +56,7 @@ const BlurDiv4 = styled.div`
     height: 27vh;
     bottom: -5%;
     min-width: 125px;
+    border: none;
     left: 0;
     z-index: -1;
     background: linear-gradient(180deg, #FFFFFF 26.9%, rgba(255, 255, 255, 0) 100%), linear-gradient(180deg, #FFFFFF 26.9%, rgba(255, 255, 255, 0) 100%), linear-gradient(180deg, #FFFFFF 26.9%, rgba(255, 255, 255, 0) 100%);
@@ -66,8 +67,9 @@ const BlurDiv4 = styled.div`
         bottom: -2%;
     }
     @media ${screens.mobile} {
-      width: 13vw;
-    height: 27vh;
+      width: 40vw;
+      min-width: 0;
+    height: 25vh;
     }
 `
 
@@ -84,12 +86,12 @@ const BlurDiv2 = styled.div`
     background: linear-gradient(180deg, #ABE2F3 26.9%, rgba(171, 226, 243, 0) 100%), linear-gradient(180deg, #ABE2F3 26.9%, rgba(171, 226, 243, 0) 100%), linear-gradient(180deg, #ABE2F3 26.9%, rgba(171, 226, 243, 0) 100%), linear-gradient(180deg, #ABE2F3 26.9%, rgba(171, 226, 243, 0) 100%);
     @media ${screens.tablet} {
         width: 30vw;
-        height: 29vh;
+        height: 26vh;
         top: -13%;
     }
     @media ${screens.mobile} {
-      width: 10vw;
-      height: 25vh;
+      width: 25vw;
+      height: 30vh;
       top: -5%;
     }
 `
@@ -110,7 +112,7 @@ export default function IntroSlider2(props) {
       <BlurDiv2></BlurDiv2>
       <BlurDiv4></BlurDiv4>
 
-        <SliderWrapper style={{right : "0", top : "0", height : "100vh", marginRight:"5vw"}}>
+        <SliderWrapper style={{right : "0", top : "0", height : "100vh", marginRight:"5vw", marginTop : "1vh"}}>
         <SlideTrack 
               as = {motion.div}
 

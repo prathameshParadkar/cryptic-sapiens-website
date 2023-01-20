@@ -30,6 +30,26 @@ const TileText = styled.p`
     }
     color: #008C95;
 `
+
+const TileBackText = styled.p`
+    font-family: 'Itim';
+    padding: 5%;
+    padding-top: 10%;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1vw;
+    text-align: center;
+    
+    @media ${screens.tablet} {
+        font-size: 2vw;
+        /* margin: 10%; */
+    }
+    @media ${screens.mobile} {
+        font-size: 2.8vw;
+        /* margin: 10%; */
+    }
+    color: #008C95;
+`
 const Tile = styled(Paper)`
     height : 33vh;
     width : 13vw;
@@ -78,7 +98,7 @@ export default function UtilTile(props) {
                     rotateY : effect ? 180 : 0,
                     
                 }}
-                transition
+                
 
                 onClick = {() => {
                     setShowFront(prev => (!prev));
@@ -88,7 +108,7 @@ export default function UtilTile(props) {
                     {
                         showFront && (
                         <>
-                            <TileText>{props.util.text}</TileText>
+                            <TileText>{props.util.title}</TileText>
                             <TileImg src={props.util.img} alt="" />
                         </>    
                         )
@@ -97,8 +117,11 @@ export default function UtilTile(props) {
                     {
                         !showFront &&
                         (
-                            <TileText
+                            <TileBackText
                             as={motion.div}
+                            initial = {{
+                                rotateY : 180
+                            }}
                             animate = {{
                                 rotateY : 180
                                 
@@ -108,8 +131,8 @@ export default function UtilTile(props) {
                             }}
                             
                             >
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus quo adipisci saepe facilis perspiciatis nisi tenetur, minima impedit autem ullam earum illum 
-                            </TileText>
+                                {props.util.para}
+                            </TileBackText>
                         ) 
                     }
                     

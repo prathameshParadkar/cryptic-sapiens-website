@@ -9,7 +9,7 @@ import {screens} from '../Data/ScreenSizes'
 
 const DropDown = styled(Paper)`
     position: absolute;
-    width: 35%;
+    width: 32%;
     z-index: 5;
     cursor: pointer;
     background: #FFFFFF;
@@ -34,7 +34,7 @@ const DropDownText = styled.p`
     font-family: 'Jua';
     font-style: normal;
     font-weight: 400;
-    font-size: 1.6vw;
+    font-size: 1.4vw;
     color: #008080;
     @media ${screens.tablet} {
         font-size: 2vw;
@@ -115,8 +115,16 @@ export default function Dropdown(props) {
             </DropDownText>
             {state && 
             <DropDownPara>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Neque voluptates ratione eveniet repudiandae id modi beatae ea qui laudantium nihil, fugit, eius doloremque rem iusto animi! Soluta voluptatibus eos eaque?
-           </DropDownPara>
+               <ol style={{paddingLeft : "5%"}}>
+                {props.para.length > 0 && props.para.map((item, index) => {
+                    return (
+                        <li key={index}>
+                            {item}
+                        </li>
+                    )
+                })}
+                </ol>  
+            </DropDownPara>
             }
         </DropDown>
     </>

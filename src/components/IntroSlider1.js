@@ -75,11 +75,11 @@ const BlurDiv1 = styled.div`
     background: linear-gradient(180deg, #ABE2F3 26.9%, rgba(171, 226, 243, 0) 100%), linear-gradient(180deg, #ABE2F3 26.9%, rgba(171, 226, 243, 0) 100%), linear-gradient(180deg, #ABE2F3 26.9%, rgba(171, 226, 243, 0) 100%), linear-gradient(180deg, #ABE2F3 26.9%, rgba(171, 226, 243, 0) 100%);
     @media ${screens.tablet} {
         width: 30vw;
-        height: 28vh;
+        height: 25vh;
     }
     @media ${screens.mobile} {
       width: 10vw;
-    height: 30vh;
+    height: 30.5vh;
     }
 
 
@@ -101,8 +101,9 @@ const BlurDiv3 = styled.div`
         bottom: 15%;
     }
     @media ${screens.mobile} {
-      width: 10vw;
-      height: 25vh;
+      width: 45vw;
+      min-width: 0;
+      height: 12vh;
       bottom: 0;
     }
 `

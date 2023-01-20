@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import FaqTile from './FaqTile'
 import {screens} from "../Data/ScreenSizes"
+import {FaqData} from '../Data/FaqData'
 
 const Container = styled.div.attrs(props => (
     {
@@ -113,19 +114,17 @@ export default function Faq() {
             }
             
             <FaqTileWrapper>
-                <FaqTile 
-                index = {1}
                 
-                />
-                <FaqTile 
-                index = {2}
-                />
-                <FaqTile 
-                index = {3}
-                />
-                <FaqTile 
-                index = {4}
-                />
+                {FaqData.length > 0 && FaqData.map((item, index) => {
+                    return (
+                        <FaqTile 
+                            key = {index}
+                            index = {index + 1}
+                            question = {item.question}
+                            answer = {item.answer}
+                        />
+                    )
+                })}
             </FaqTileWrapper>
         </Wrapper>
     </Container>

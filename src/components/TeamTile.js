@@ -46,7 +46,8 @@ const PhotoDiv = styled.div`
     width: 12vw;
     height: 12vw;
     border-radius: 50%;
-    background: #F5F5F5;
+    background: url(${props => props.img});
+    background-size: contain;
 
     @media ${screens.tablet} {
       width: 20vw;
@@ -57,6 +58,12 @@ const PhotoDiv = styled.div`
     height: 27vw;
     }
 `
+
+const Photo = styled.img`
+  width: inherit;
+  height: inherit;
+  
+`
 export default function TeamTile(props) {
 
   React.useEffect(() => {
@@ -66,11 +73,7 @@ export default function TeamTile(props) {
   return (
     <>
     <Container>
-    <PhotoDiv  data-aos = "fade-up">
-      {
-        props.img !== null && 
-        <img src={props.img} alt="" />
-      }
+    <PhotoDiv img = {props.img}  data-aos = "fade-up">
     </PhotoDiv>
         <Name data-aos = "fade-up">
             {props.name}
